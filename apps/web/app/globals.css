@@ -1,0 +1,98 @@
+:root {
+  /* Typography */
+  --type-display-size: clamp(2.5rem, 1.9rem + 2vw, 3.5rem);
+  --type-display-line: 1.08;
+  --type-heading-size: clamp(2rem, 1.65rem + 1.1vw, 2.5rem);
+  --type-heading-line: 1.15;
+  --type-body-size: 0.9375rem;
+  --type-body-line: 1.6;
+  --type-caption-size: 0.75rem;
+  --type-caption-line: 1.35;
+
+  /* Spacing (4/8 rhythm + editorial steps) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* Color roles */
+  --color-surface: #f6f3ee;
+  --color-surface-elevated: #fffaf2;
+  --color-text-primary: #172026;
+  --color-text-secondary: #46535d;
+  --color-text-inverse-primary: #fefcf8;
+  --color-text-inverse-secondary: rgba(254, 252, 248, 0.88);
+  --color-accent: #8a6738;
+  --color-line: #c4cfd6;
+
+  /* Motion */
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 180ms;
+  --motion-duration-slow: 280ms;
+  --motion-easing-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.type-display {
+  font-family: var(--font-display), serif;
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-line);
+  letter-spacing: -0.01em;
+}
+
+.type-heading {
+  font-family: var(--font-display), serif;
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-line);
+}
+
+.type-body {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+
+.type-caption {
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-line);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.text-role-primary {
+  color: var(--color-text-primary);
+}
+
+.text-role-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-role-inverse-primary {
+  color: var(--color-text-inverse-primary);
+}
+
+.text-role-inverse-secondary {
+  color: var(--color-text-inverse-secondary);
+}
+
+.surface-elevated {
+  background: var(--color-surface-elevated);
+}
+
+.border-role-line {
+  border-color: var(--color-line);
+}
+
+.motion-subtle {
+  transition-duration: var(--motion-duration-base);
+  transition-timing-function: var(--motion-easing-standard);
+}
