@@ -12,9 +12,9 @@ export default function DemoPage() {
         }}
       >
         <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.18em] text-sand/70">Seeded demo trip</p>
-          <h1 className="max-w-2xl font-display text-5xl">{fallbackTrip.name}</h1>
-          <p className="max-w-2xl text-sm leading-6 text-sand/78">{fallbackTrip.destination.heroHeadline}</p>
+          <p className="type-caption text-role-inverse-secondary">Seeded demo trip</p>
+          <h1 className="max-w-2xl type-display text-role-inverse-primary">{fallbackTrip.name}</h1>
+          <p className="max-w-2xl type-body text-role-inverse-secondary">{fallbackTrip.destination.heroHeadline}</p>
           <Button asChild variant="secondary">
             <Link href="/trips/demo-trip">Open full workspace</Link>
           </Button>
