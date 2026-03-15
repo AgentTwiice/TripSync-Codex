@@ -8,6 +8,8 @@ import Link from "next/link";
 export default async function InvitePage({ params }: { params: { token: string } }) {
   const { token } = params;
   const session = await auth();
+  const inviteHref = `/invite/${token}`;
+  const loginHref = `/login?callbackUrl=${encodeURIComponent(inviteHref)}`;
   const invite = await prisma.tripInvite.findUnique({
     where: {
       tokenHash: hashInviteToken(token)
@@ -31,17 +33,35 @@ export default async function InvitePage({ params }: { params: { token: string }
             ? "This invite is active. Accept it to join the trip workspace with the assigned role."
             : "This invite has expired, was revoked, or has already been used."}
         </p>
+        {isValid && session?.user ? (
+          <p className="text-sm text-ink/65">
+            You&apos;re joining <span className="font-medium text-ink">{invite?.trip.name}</span> with expected
+            member access.
+          </p>
+        ) : null}
         {isValid ? (
           session?.user ? (
             <form action={acceptInviteAction.bind(null, token)}>
               <Button type="submit">Accept invite</Button>
             </form>
           ) : (
-            <Button asChild>
-              <Link href="/login">Sign in to accept</Link>
-            </Button>
+            <div className="space-y-3">
+              <p className="text-sm text-ink/65">1. Sign in or create an account. 2. Return here automatically to accept.</p>
+              <Button asChild>
+                <Link href={loginHref}>Sign in to accept</Link>
+              </Button>
+            </div>
           )
-        ) : null}
+        ) : (
+          <div className="flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href="mailto:support@tripsync.app?subject=Request%20a%20new%20TripSync%20invite">Request a new invite</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/">Back to home</Link>
+            </Button>
+          </div>
+        )}
       </Surface>
     </main>
   );
